@@ -4,18 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Арина Филатова — Business Analyst</title>
-  <meta name="description" content="Арина Филатова — Business Analyst (B2B / IT). Требования, процессы, документация, интеграции.">
+  <meta name="description" content="Арина Филатова — Business Analyst (B2B / IT). Требования, процессы, документация.">
 
-  <!-- Favicon (иконка вкладки) -->
-  <!-- ВАЖНО: добавь в репозиторий файл favicon.png рядом с index.html -->
+  <!-- Добавь favicon.png рядом с index.html -->
   <link rel="icon" type="image/png" href="./favicon.png">
 
   <style>
     :root{
       --bg1:#0b1020;
       --bg2:#0a1636;
-      --card: rgba(255,255,255,.08);
-      --card2: rgba(255,255,255,.06);
       --line: rgba(255,255,255,.14);
       --text:#eaf0ff;
       --muted: rgba(234,240,255,.72);
@@ -28,6 +25,7 @@
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
+
     body{
       margin:0;
       color:var(--text);
@@ -93,7 +91,6 @@
         radial-gradient(600px 240px at 20% 0%, rgba(122,167,255,.30), transparent 65%),
         radial-gradient(520px 240px at 80% 0%, rgba(255,122,168,.20), transparent 60%);
       pointer-events:none;
-      filter: blur(0.2px);
     }
 
     .hero{
@@ -109,6 +106,7 @@
       font-size: 36px;
       letter-spacing:-0.02em;
     }
+
     .subtitle{
       margin: 6px 0 10px;
       font-weight: 650;
@@ -138,10 +136,7 @@
       margin-top: 14px;
     }
 
-    a{
-      color: var(--text);
-      text-decoration:none;
-    }
+    a{ color: var(--text); text-decoration:none; }
 
     .btn{
       display:inline-flex;
@@ -185,18 +180,20 @@
       color: var(--muted2);
       margin-bottom: 6px;
     }
+
     .miniCard .v{
       font-size: 14px;
       color: rgba(234,240,255,.92);
       font-weight: 600;
     }
 
+    /* ======= ВЫРАВНИВАНИЕ СЕТКИ (КАК НА СКРИНЕ) ======= */
     .grid{
       display:grid;
-      grid-template-columns: 0.92fr 1.08fr; /* ужалила левый блок */
+      grid-template-columns: 0.92fr 1.08fr;
       gap: 14px;
       margin-top: 16px;
-      align-items: start;
+      align-items: stretch; /* важно: тянем по высоте */
     }
 
     section{
@@ -205,6 +202,8 @@
       border-radius: var(--radius);
       padding: 18px 18px 16px;
       box-shadow: 0 14px 45px rgba(0,0,0,.25);
+      height: 100%; /* важно: чтобы секция тянулась */
+      overflow: hidden; /* чтобы ничего не наезжало */
     }
 
     h2{
@@ -219,33 +218,15 @@
     }
 
     p{ margin: 0 0 10px; color: rgba(234,240,255,.88); }
-    ul{ margin: 8px 0 0 18px; color: rgba(234,240,255,.88); }
-    li{ margin: 6px 0; }
-
-    /* Списки тире вместо буллетов (и меньше «съедают» пространство) */
-    .dash{
-      list-style: none;
-      margin: 10px 0 0;
-      padding: 0;
-    }
-    .dash li{
-      margin: 8px 0;
-      padding-left: 16px;
-      position: relative;
-    }
-    .dash li:before{
-      content: "—";
-      position: absolute;
-      left: 0;
-      color: rgba(234,240,255,.72);
-    }
-
     .muted{ color: var(--muted); font-size: 13px; }
 
+    /* Внутренняя сетка в секции "Что я делаю как BA" */
     .cards2{
       display:grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 14px;
+      align-items: stretch;
+      grid-auto-rows: 1fr; /* карточки одинаковой высоты */
     }
 
     .card{
@@ -253,9 +234,11 @@
       background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
       border-radius: var(--radius);
       padding: 14px 14px 12px;
+      height: 100%;
+      display:flex;
+      flex-direction: column;
+      min-width: 0;
     }
-
-    .card h3{ margin-top:0; }
 
     .badge{
       display:inline-flex;
@@ -268,6 +251,7 @@
       background: rgba(122,167,255,.12);
       color: rgba(234,240,255,.92);
       margin-bottom: 10px;
+      width: fit-content;
     }
 
     .check{
@@ -281,6 +265,30 @@
       font-size: 12px;
     }
 
+    /* ======= Список с тире и отступом после тире ======= */
+    .dash{
+      list-style: none;
+      margin: 10px 0 0;
+      padding: 0;
+    }
+
+    .dash li{
+      position: relative;
+      margin: 10px 0;
+      padding-left: 22px; /* отступ от тире до текста */
+      color: rgba(234,240,255,.88);
+      min-width: 0;
+      word-break: break-word;
+    }
+
+    .dash li::before{
+      content: "—";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: rgba(234,240,255,.70);
+    }
+
     footer{
       padding: 18px 6px 0;
       color: var(--muted2);
@@ -288,14 +296,10 @@
       text-align:center;
     }
 
-    @media (min-width: 860px){
-      .cards2{ grid-template-columns: 1fr 1fr; }
-    }
-
     @media (max-width: 860px){
       .hero{ grid-template-columns: 1fr; }
-      .rightCol{ order: 2; }
       .grid{ grid-template-columns: 1fr; }
+      .cards2{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -319,7 +323,7 @@
             <span class="tag">Документация / ТЗ</span>
             <span class="tag">Процессы (AS-IS / TO-BE)</span>
             <span class="tag">BPMN / UML (база)</span>
-            <span class="tag">Коммуникация со стейкхолдерами</span>
+            <span class="tag">Коммуникация со стейкхолдерерами</span>
             <span class="tag">Инструменты: Office / Jira</span>
           </div>
 
@@ -475,8 +479,6 @@
       <p class="muted">© Арина Филатова</p>
     </section>
 
-    <footer></footer>
   </main>
 </body>
 </html>
-
