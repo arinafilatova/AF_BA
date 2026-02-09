@@ -6,131 +6,277 @@
   <title>Арина Филатова — Business Analyst</title>
   <meta name="description" content="Арина Филатова — Business Analyst (B2B / IT). Требования, процессы, документация, интеграции.">
 
+  <!-- Favicon (иконка вкладки) -->
+  <!-- ВАЖНО: добавь в репозиторий файл favicon.png рядом с index.html -->
+  <link rel="icon" type="image/png" href="./favicon.png">
+
   <style>
-    :root {
-      --bg: #ffffff;
-      --text: #111827;
-      --muted: #6b7280;
-      --line: #e5e7eb;
-      --link: #1d4ed8;
-      --card: #f9fafb;
+    :root{
+      --bg1:#0b1020;
+      --bg2:#0a1636;
+      --card: rgba(255,255,255,.08);
+      --card2: rgba(255,255,255,.06);
+      --line: rgba(255,255,255,.14);
+      --text:#eaf0ff;
+      --muted: rgba(234,240,255,.72);
+      --muted2: rgba(234,240,255,.55);
+      --accent:#7aa7ff;
+      --accent2:#ff7aa8;
+      --good:#7affc0;
+      --shadow: 0 18px 55px rgba(0,0,0,.35);
+      --radius: 18px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      color:var(--text);
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.55;
+      line-height:1.55;
+      background:
+        radial-gradient(1100px 600px at 20% 0%, rgba(122,167,255,.35), transparent 60%),
+        radial-gradient(900px 600px at 80% 10%, rgba(255,122,168,.22), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
     }
 
-    .container {
-      max-width: 900px;
+    .container{
+      max-width: 980px;
       margin: 0 auto;
-      padding: 32px 20px 48px;
+      padding: 34px 18px 52px;
     }
 
-    header {
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--line);
+    .topbar{
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      gap:14px;
+      margin-bottom: 16px;
     }
 
-    h1 {
-      margin: 0 0 6px;
-      font-size: 34px;
-      letter-spacing: -0.02em;
-    }
-
-    .subtitle {
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .tags {
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 16px;
-      font-size: 14px;
-    }
-
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    section {
-      padding: 20px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    section:last-of-type {
-      border-bottom: none;
-    }
-
-    h2 {
-      margin: 0 0 12px;
-      font-size: 20px;
-      letter-spacing: -0.01em;
-    }
-
-    h3 {
-      margin: 16px 0 6px;
-      font-size: 16px;
-    }
-
-    p {
-      margin: 0 0 10px;
-    }
-
-    ul {
-      margin: 8px 0 0 18px;
-    }
-
-    li {
-      margin: 6px 0;
-    }
-
-    .muted {
-      color: var(--muted);
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 35px rgba(0,0,0,.22);
       font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
     }
 
-    .grid {
-      display: grid;
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(122,167,255,.15);
+    }
+
+    header{
+      position:relative;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border-radius: var(--radius);
+      padding: 22px 22px 18px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    header:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(600px 240px at 20% 0%, rgba(122,167,255,.30), transparent 65%),
+        radial-gradient(520px 240px at 80% 0%, rgba(255,122,168,.20), transparent 60%);
+      pointer-events:none;
+      filter: blur(0.2px);
+    }
+
+    .hero{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px 16px;
+      align-items: start;
+    }
+
+    .title{
+      margin:0;
+      font-size: 36px;
+      letter-spacing:-0.02em;
+    }
+    .subtitle{
+      margin: 6px 0 10px;
+      font-weight: 650;
+      color: rgba(234,240,255,.92);
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin: 10px 0 0;
+    }
+
+    .tag{
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+    }
+
+    .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 12px;
+      margin-top: 14px;
+    }
+
+    a{
+      color: var(--text);
+      text-decoration:none;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-size: 14px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.09);
+      border-color: rgba(255,255,255,.22);
+    }
+
+    .btn--accent{
+      border-color: rgba(122,167,255,.35);
+      background: linear-gradient(135deg, rgba(122,167,255,.22), rgba(255,122,168,.12));
+    }
+
+    .rightCol{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .miniCard{
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      border-radius: 14px;
+      padding: 12px 14px;
+    }
+
+    .miniCard .k{
+      font-size: 12px;
+      color: var(--muted2);
+      margin-bottom: 6px;
+    }
+    .miniCard .v{
+      font-size: 14px;
+      color: rgba(234,240,255,.92);
+      font-weight: 600;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    section{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      padding: 18px 18px 16px;
+      box-shadow: 0 14px 45px rgba(0,0,0,.25);
+    }
+
+    h2{
+      margin:0 0 12px;
+      font-size: 18px;
+      letter-spacing:-0.01em;
+    }
+
+    h3{
+      margin: 14px 0 6px;
+      font-size: 15px;
+    }
+
+    p{ margin: 0 0 10px; color: rgba(234,240,255,.88); }
+    ul{ margin: 8px 0 0 18px; color: rgba(234,240,255,.88); }
+    li{ margin: 6px 0; }
+
+    .muted{ color: var(--muted); font-size: 13px; }
+
+    .cards2{
+      display:grid;
       grid-template-columns: 1fr;
       gap: 14px;
     }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px 16px;
+    .card{
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border-radius: var(--radius);
+      padding: 14px 14px 12px;
     }
 
-    footer {
-      padding-top: 20px;
-      color: var(--muted);
+    .card h3{ margin-top:0; }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(122,167,255,.35);
+      background: rgba(122,167,255,.12);
+      color: rgba(234,240,255,.92);
+      margin-bottom: 10px;
+    }
+
+    .check{
+      width:16px;height:16px;border-radius:6px;
+      background: rgba(122,167,255,.20);
+      display:inline-flex;align-items:center;justify-content:center;
+      border: 1px solid rgba(122,167,255,.35);
+      color: var(--good);
+      font-weight: 800;
+      line-height: 1;
+      font-size: 12px;
+    }
+
+    footer{
+      padding: 18px 6px 0;
+      color: var(--muted2);
       font-size: 13px;
+      text-align:center;
     }
 
-    @media (min-width: 740px) {
-      .grid {
-        grid-template-columns: 1fr 1fr;
-      }
+    @media (min-width: 860px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+      .cards2{ grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 860px){
+      .hero{ grid-template-columns: 1fr; }
+      .rightCol{ order: 2; }
     }
   </style>
 </head>
@@ -138,61 +284,114 @@
 <body>
   <main class="container">
 
-    <!-- HERO -->
-    <header>
-      <h1>Арина Филатова</h1>
-      <div class="subtitle">Business Analyst (B2B / IT)</div>
-      <div class="tags">
-        требования • процессы • документация • BPMN / UML • интеграции • стейкхолдеры
-      </div>
+    <div class="topbar">
+      <div class="pill"><span class="dot"></span> Open to BA roles • B2B / IT</div>
+      <div class="pill">Контакты: <a href="mailto:arina.filatova.2014@bk.ru">arina.filatova.2014@bk.ru</a></div>
+    </div>
 
-      <nav class="links">
-        <a href="./resume.pdf" target="_blank">Резюме (PDF)</a>
-        <a href="https://hh.ru/" target="_blank">hh.ru</a>
-        <a href="mailto:arina.filatova.2014@bk.ru">Email</a>
-        <a href="tel:+79856161795">Телефон</a>
-      </nav>
+    <header>
+      <div class="hero">
+        <div>
+          <h1 class="title">Арина Филатова</h1>
+          <div class="subtitle">Business Analyst (B2B / IT)</div>
+
+          <div class="tags">
+            <span class="tag">Сбор и анализ требований</span>
+            <span class="tag">Документация / ТЗ</span>
+            <span class="tag">Процессы (AS-IS / TO-BE)</span>
+            <span class="tag">BPMN / UML (база)</span>
+            <span class="tag">Коммуникация со стейкхолдерами</span>
+            <span class="tag">Инструменты: Office / Jira</span>
+          </div>
+
+          <div class="links">
+            <a class="btn btn--accent" href="https://hh.ru/resume/c9d5526dff0ff3a9ba0039ed1f416e53694675" target="_blank" rel="noopener">
+              hh.ru — резюме
+            </a>
+            <a class="btn" href="mailto:arina.filatova.2014@bk.ru">Email</a>
+            <a class="btn" href="tel:+79856161795">Телефон</a>
+          </div>
+        </div>
+
+        <div class="rightCol">
+          <div class="miniCard">
+            <div class="k">Фокус</div>
+            <div class="v">Требования → решение → внедрение</div>
+          </div>
+          <div class="miniCard">
+            <div class="k">Сильные стороны</div>
+            <div class="v">структура • ответственность • коммуникация</div>
+          </div>
+          <div class="miniCard">
+            <div class="k">Подход</div>
+            <div class="v">фиксирую договорённости и держу прозрачность</div>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <!-- ABOUT -->
-    <section>
-      <h2>Кратко обо мне</h2>
-      <p>
-        Business Analyst с сильной проектной базой в B2B и опытом работы на стыке бизнеса,
-        команды и подрядчиков. Перехожу в роль BA, опираясь на опыт проектной деятельности,
-        работу с требованиями, документацией и аналитикой.
-      </p>
-      <p>
-        Умею структурировать вводные, фиксировать договорённости, работать с изменениями
-        и доводить решения до внедрения.
-      </p>
-    </section>
+    <div class="grid">
 
-    <!-- CASES -->
+      <section>
+        <h2>Кратко обо мне</h2>
+        <p>
+          Перехожу в роль Business Analyst, опираясь на проектный опыт в B2B: работа на стыке бизнеса, команды и подрядчиков,
+          сбор вводных, оформление ТЗ, управление изменениями и контроль результата.
+        </p>
+        <p class="muted">
+          Мне комфортно работать в условиях неопределённости: уточнять, структурировать, фиксировать и доводить до понятного результата.
+        </p>
+      </section>
+
+      <section>
+        <h2>Что я делаю как BA</h2>
+        <div class="cards2">
+          <div class="card">
+            <div class="badge"><span class="check">✓</span> Требования</div>
+            <ul>
+              <li>Сбор, уточнение, приоритизация</li>
+              <li>Фиксация критериев приёмки</li>
+              <li>Согласование с заинтересованными сторонами</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="badge"><span class="check">✓</span> Документация</div>
+            <ul>
+              <li>ТЗ / постановки / спецификации</li>
+              <li>Описание сценариев и ограничений</li>
+              <li>Контроль изменений и версий</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
     <section>
       <h2>Кейсы и задачи</h2>
 
       <h3>Сбор и структурирование требований</h3>
       <p>
-        Собирала требования от нескольких стейкхолдеров, уточняла цели, ограничения
-        и критерии успеха. Формализовывала требования в виде понятной документации
-        для команды и подрядчиков.
+        Собирала требования от нескольких стейкхолдеров, уточняла цели, ограничения и критерии успеха.
+        Формализовывала требования в понятные документы для команды и подрядчиков.
       </p>
 
       <h3>Работа с изменениями</h3>
       <p>
-        Фиксировала и согласовывала изменения в условиях высокой неопределённости,
-        помогая избежать расхождений в ожиданиях и снижая риски срыва сроков и бюджета.
+        Фиксировала и согласовывала изменения в условиях высокой неопределённости, чтобы ожидания не расходились,
+        а команда работала по «одной версии правды».
       </p>
 
-      <h3>Портфолио-кейс: REST API интеграция</h3>
+      <h3>Портфолио-кейс: автоматизация и описание процесса (AS-IS → TO-BE)</h3>
       <p>
-        Проработка интеграции между сервисами: цели, данные, сценарии,
-        ошибки, требования к API и критерии приёмки.
+        Проработка улучшения процесса: сбор проблем и целей, описание текущего процесса AS-IS, формирование целевого TO-BE,
+        правила и исключения, требования к данным и отчётности, критерии приёмки и метрики результата.
+      </p>
+      <p class="muted">
+        (Если хочешь, позже добавим ссылку на документ/репозиторий, чтобы кейс был кликабельным.)
       </p>
     </section>
 
-    <!-- EXPERIENCE -->
     <section>
       <h2>Опыт</h2>
 
@@ -206,8 +405,8 @@
 
       <h3>ABD Entertainment — Project Manager</h3>
       <ul>
-        <li>Координация задач и контроль исполнения</li>
-        <li>Ведение проектной документации и статусов</li>
+        <li>Координация задач, контроль исполнения и статусов</li>
+        <li>Ведение проектной документации, контрольные точки</li>
       </ul>
 
       <h3>ЭВРИКА — Project Assistant</h3>
@@ -218,18 +417,15 @@
       </ul>
     </section>
 
-    <!-- SKILLS -->
     <section>
       <h2>Навыки</h2>
-
-      <div class="grid">
+      <div class="cards2">
         <div class="card">
           <h3>Hard skills</h3>
           <ul>
             <li>Сбор и анализ требований</li>
             <li>Подготовка ТЗ и проектной документации</li>
-            <li>BPMN / UML — базовый уровень</li>
-            <li>AS-IS / TO-BE — базовый уровень</li>
+            <li>AS-IS / TO-BE (база), BPMN / UML (база)</li>
             <li>Google / MS Office, 1С, CRM</li>
             <li>Jira, Trello</li>
             <li>SQL и Python — базовые знания</li>
@@ -239,7 +435,7 @@
         <div class="card">
           <h3>Soft skills</h3>
           <ul>
-            <li>Системное мышление</li>
+            <li>Системное мышление и структурность</li>
             <li>Коммуникация со стейкхолдерами</li>
             <li>Работа в условиях неопределённости</li>
             <li>Приоритизация</li>
@@ -250,30 +446,21 @@
       </div>
     </section>
 
-    <!-- EDUCATION -->
-    <section>
-      <h2>Образование и курсы</h2>
-      <ul>
-        <li>НИУ ВШЭ — Управление бизнесом</li>
-        <li>Skillbox — Управление проектами</li>
-        <li>Aston — System Analyst</li>
-        <li>Data Analytics: Python & SQL</li>
-      </ul>
-    </section>
-
-    <!-- CONTACT -->
     <section>
       <h2>Контакты</h2>
       <p>
         Email: <a href="mailto:arina.filatova.2014@bk.ru">arina.filatova.2014@bk.ru</a><br>
+        hh.ru: <a href="https://hh.ru/resume/c9d5526dff0ff3a9ba0039ed1f416e53694675" target="_blank" rel="noopener">ссылка на резюме</a><br>
         Телефон: <a href="tel:+79856161795">+7 (985) 616-17-95</a>
       </p>
+      <p class="muted">© Арина Филатова</p>
     </section>
 
     <footer>
-      © Арина Филатова
+      Сделано для GitHub Pages • Один файл (index.html) + favicon.png
     </footer>
 
   </main>
 </body>
 </html>
+
