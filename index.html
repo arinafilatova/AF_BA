@@ -22,7 +22,6 @@
       --muted2: rgba(234,240,255,.55);
       --accent:#7aa7ff;
       --accent2:#ff7aa8;
-      --good:#7affc0;
       --shadow: 0 18px 55px rgba(0,0,0,.35);
       --radius: 18px;
     }
@@ -52,6 +51,7 @@
       align-items:center;
       gap:14px;
       margin-bottom: 16px;
+      flex-wrap: wrap;
     }
 
     .pill{
@@ -99,7 +99,7 @@
     .hero{
       position:relative;
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: 1.2fr .8fr;
       gap: 18px 16px;
       align-items: start;
     }
@@ -193,9 +193,10 @@
 
     .grid{
       display:grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 0.92fr 1.08fr; /* ужалила левый блок */
       gap: 14px;
       margin-top: 16px;
+      align-items: start;
     }
 
     section{
@@ -220,6 +221,24 @@
     p{ margin: 0 0 10px; color: rgba(234,240,255,.88); }
     ul{ margin: 8px 0 0 18px; color: rgba(234,240,255,.88); }
     li{ margin: 6px 0; }
+
+    /* Списки тире вместо буллетов (и меньше «съедают» пространство) */
+    .dash{
+      list-style: none;
+      margin: 10px 0 0;
+      padding: 0;
+    }
+    .dash li{
+      margin: 8px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+    .dash li:before{
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: rgba(234,240,255,.72);
+    }
 
     .muted{ color: var(--muted); font-size: 13px; }
 
@@ -256,7 +275,7 @@
       background: rgba(122,167,255,.20);
       display:inline-flex;align-items:center;justify-content:center;
       border: 1px solid rgba(122,167,255,.35);
-      color: var(--good);
+      color: rgba(122,255,192,.95);
       font-weight: 800;
       line-height: 1;
       font-size: 12px;
@@ -270,13 +289,13 @@
     }
 
     @media (min-width: 860px){
-      .grid{ grid-template-columns: 1fr 1fr; }
       .cards2{ grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 860px){
       .hero{ grid-template-columns: 1fr; }
       .rightCol{ order: 2; }
+      .grid{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -345,18 +364,20 @@
 
       <section>
         <h2>Что я делаю как BA</h2>
+
         <div class="cards2">
           <div class="card">
             <div class="badge"><span class="check">✓</span> Требования</div>
-            <ul>
+            <ul class="dash">
               <li>Сбор, уточнение, приоритизация</li>
               <li>Фиксация критериев приёмки</li>
-              <li>Согласование с заинтересованными сторонами</li>
+              <li>Согласование со стейкхолдерами</li>
             </ul>
           </div>
+
           <div class="card">
             <div class="badge"><span class="check">✓</span> Документация</div>
-            <ul>
+            <ul class="dash">
               <li>ТЗ / постановки / спецификации</li>
               <li>Описание сценариев и ограничений</li>
               <li>Контроль изменений и версий</li>
@@ -382,13 +403,11 @@
         а команда работала по «одной версии правды».
       </p>
 
-      <h3>Портфолио-кейс: автоматизация и описание процесса (AS-IS → TO-BE)</h3>
+      <h3>Кейс: запуск проекта за неделю для 4 заказчиков</h3>
       <p>
-        Проработка улучшения процесса: сбор проблем и целей, описание текущего процесса AS-IS, формирование целевого TO-BE,
-        правила и исключения, требования к данным и отчётности, критерии приёмки и метрики результата.
-      </p>
-      <p class="muted">
-        (Если хочешь, позже добавим ссылку на документ/репозиторий, чтобы кейс был кликабельным.)
+        За 1 неделю собрала и синхронизировала работу по 4 параллельным заказчикам: уточнила вводные, сформировала план и контрольные точки,
+        распределила задачи между креативом и подрядчиками, собрала смету и логистику. Держала ежедневные статусы, фиксировала изменения и риски,
+        чтобы проекты были реализованы в срок и в рамках договорённостей.
       </p>
     </section>
 
@@ -396,21 +415,21 @@
       <h2>Опыт</h2>
 
       <h3>Imagency — Project Manager (B2B)</h3>
-      <ul>
+      <ul class="dash">
         <li>Работа на стыке бизнеса, команды и подрядчиков</li>
         <li>Сбор вводных и подготовка ТЗ</li>
         <li>Контроль сроков, бюджета и качества</li>
         <li>Рост фактической прибыли проектов на ~10 п.п. к плановой</li>
       </ul>
 
-      <h3>ABD Entertainment — Project Manager</h3>
-      <ul>
+      <h3>ABD: Entertainment — Project Manager</h3>
+      <ul class="dash">
         <li>Координация задач, контроль исполнения и статусов</li>
         <li>Ведение проектной документации, контрольные точки</li>
       </ul>
 
       <h3>ЭВРИКА — Project Assistant</h3>
-      <ul>
+      <ul class="dash">
         <li>Подготовка и сопровождение проектной документации</li>
         <li>Коммуникация с клиентами и подрядчиками</li>
         <li>Участие в подготовке и выигрыше аукционов по 223-ФЗ</li>
@@ -422,7 +441,7 @@
       <div class="cards2">
         <div class="card">
           <h3>Hard skills</h3>
-          <ul>
+          <ul class="dash">
             <li>Сбор и анализ требований</li>
             <li>Подготовка ТЗ и проектной документации</li>
             <li>AS-IS / TO-BE (база), BPMN / UML (база)</li>
@@ -434,7 +453,7 @@
 
         <div class="card">
           <h3>Soft skills</h3>
-          <ul>
+          <ul class="dash">
             <li>Системное мышление и структурность</li>
             <li>Коммуникация со стейкхолдерами</li>
             <li>Работа в условиях неопределённости</li>
@@ -456,10 +475,7 @@
       <p class="muted">© Арина Филатова</p>
     </section>
 
-    <footer>
-      Сделано для GitHub Pages • Один файл (index.html) + favicon.png
-    </footer>
-
+    <footer></footer>
   </main>
 </body>
 </html>
